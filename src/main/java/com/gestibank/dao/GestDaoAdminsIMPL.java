@@ -16,28 +16,18 @@ import com.gestibank.entities.Demandes;
 import com.gestibank.entities.Utilisateur;
 
 @SuppressWarnings("unused")
-public class AffectationsDaoImpl implements AffectationsDao{
-	
-	
-	
-	public AffectationsDaoImpl() {
-		super();
-		EntityManagerFactory emf =Persistence.createEntityManagerFactory("gestibank" );
-		EntityManager em = emf.createEntityManager();
-		em.getTransaction().begin();
-	}
+public class GestDaoAdminsIMPL implements GestDaoAdmins{
 
-
-//	EntityManager em;
+	@PersistenceContext
+	private EntityManager em;
+//	private EntityManagerFactory emf=Persistence.createEntityManagerFactory("gestibank" );
+//	private EntityManager em=emf.createEntityManager(); 
 	
-	EntityManagerFactory emf =Persistence.createEntityManagerFactory("gestibank" );
-	EntityManager em = emf.createEntityManager();
-
 	@Override
 	public void addClient(Client cli) {
-		em.getTransaction().begin();
-		System.out.println("addClient");
+		System.out.println(cli.getEmail());
 		em.persist(cli);
+		System.out.println("addClient");
 	}
 
 	@Override
@@ -47,10 +37,7 @@ public class AffectationsDaoImpl implements AffectationsDao{
 	}
 
 	@Override
-	public Compte addCompte(Compte cp, Client cli) {
-		em.getTransaction().begin();
-		System.out.println("addCompte");
-		cp.setClient(cli);
+	public Compte addCompte(Compte cp) {
 		em.persist(cp);
 		return cp;
 	}

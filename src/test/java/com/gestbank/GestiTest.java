@@ -6,6 +6,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import org.hibernate.tuple.entity.EntityMetamodel.GenerationStrategyPair;
+
 import com.gestibank.dao.*;
 import com.gestibank.entities.Client;
 import com.gestibank.entities.Conseiller;
@@ -18,25 +20,21 @@ public class GestiTest {
 	public static void main(String[] args) {
 
 		
-/*		// Client
+		// Client
 		Client c1 = new Client("Nathan", "Dumas", "nathan.dumas@gmail.com", "123452", "0781529996", "Nathan");
 		c1.setAdresse("Lens");
-		c1.setMatricule("A125F");
 		c1.setNbenfants(3);
 		
 		Client c2 = new Client("Dylan", "Dubois", "dylan.dubois@hotmail.com", "123454", "0781629125", "Dylan");
 		c2.setAdresse("Arras");
-		c2.setMatricule("A512F");
 		c2.setNbenfants(0);
 		
 		Client c3 = new Client("Mohammed", "Mezrou", "mohammed.mezrou@hotmail.com", "123452", "0781829124", "Mohammedn");
 		c3.setAdresse("Fiver");
-		c3.setMatricule("A402F");
 		c3.setNbenfants(1);
 		
 		Client c4 = new Client("Cyril", "Mezrou", "cyril.mezrou@hotmail.com", "123455", "0781829128", "Cyril");
-		c4.setAdresse("Fiver");
-		c4.setMatricule("A402F");
+		c4.setAdresse("Hellemmes");
 		c4.setNbenfants(1);
 		
 		// Conseiller
@@ -79,21 +77,20 @@ public class GestiTest {
 		
 		em.getTransaction().commit();
 		em.close();
-		emf.close();*/
+		emf.close();
 		
-		AffectationsDao dao = new AffectationsDaoImpl();
+		GestDaoAdmins dao = new GestDaoAdminsIMPL();
 		
 		Client c5 = new Client("Cyril", "Mezrou", "cyril.mezrou@hotmail.com", "123455", "0781829128", "Cyril");
 		c5.setAdresse("Centre");
-		c5.setMatricule("A589F");
 		c5.setNbenfants(1);
 		Client c6 = new Client("Sptephan", "Allows", "cyril.mezrou@hotmail.com", "123455", "0781829128", "Cyril");
 		c6.setAdresse("Gambetta");
-		c6.setMatricule("A101F");
 		c6.setNbenfants(1);
 
 		dao.addClient(c5);
-//		dao.addClient(c6);
+
+		dao.addCompte(cc1);
 
 
 	}

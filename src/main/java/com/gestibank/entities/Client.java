@@ -17,7 +17,6 @@ public class Client extends Utilisateur {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String matricule; // à supprimer
 	private String adresse;
 	private int nbenfants;
 	
@@ -30,9 +29,8 @@ public class Client extends Utilisateur {
 		super();
 	}
 
-	public Client(String matricule, String adresse, int nbenfants) {
+	public Client(String adresse, int nbenfants) {
 		super();
-		this.matricule = matricule;
 		this.adresse = adresse;
 		this.nbenfants = nbenfants;
 	}
@@ -44,12 +42,6 @@ public class Client extends Utilisateur {
 		// TODO Auto-generated constructor stub
 	}
 
-	public String getMatricule() {
-		return matricule;
-	}
-	public void setMatricule(String matricule) {
-		this.matricule = matricule;
-	}
 
 	public String getAdresse() {
 		return adresse;
