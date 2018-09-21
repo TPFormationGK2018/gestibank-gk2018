@@ -6,6 +6,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 import org.hibernate.tuple.entity.EntityMetamodel.GenerationStrategyPair;
 
 import com.gestibank.dao.*;
@@ -61,8 +64,16 @@ public class GestiTest {
 		CpteRemunere cr1 = new CpteRemunere("FR68-4263-2521-6020-005", new Date(), 9000, c4, cs2);
 		cr1.setTaux(0.5);
 		
+		SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		session.save(c1);
+		session.save(c2);
+		session.getTransaction().commit();
+		session.close();
 		
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("gestibank");
+		
+/*		EntityManagerFactory emf = Persistence.createEntityManagerFactory("gestibank");
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
 //		Ajouter clients
@@ -75,9 +86,6 @@ public class GestiTest {
 //		Ajouter comptes
 		em.persist(cc1);em.persist(cc2);em.persist(cr1);
 		
-		em.getTransaction().commit();
-		em.close();
-		emf.close();
 		
 		GestDaoAdmins dao = new GestDaoAdminsIMPL();
 		
@@ -91,6 +99,10 @@ public class GestiTest {
 		dao.addClient(c5);
 
 		dao.addCompte(cc1);
+		
+		em.getTransaction().commit();
+		em.close();
+		emf.close();*/
 
 
 	}
