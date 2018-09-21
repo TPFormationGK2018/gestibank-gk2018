@@ -2,6 +2,7 @@ package com.gestibank.metier;
 
 import java.util.List;
 
+import com.gestibank.dao.GestDaoAdmins;
 import com.gestibank.entities.Client;
 import com.gestibank.entities.Compte;
 import com.gestibank.entities.Conseiller;
@@ -9,18 +10,37 @@ import com.gestibank.entities.DeOuvCompte;
 import com.gestibank.entities.Demandes;
 import com.gestibank.entities.Utilisateur;
 
-public abstract class AffectationsMetierImpl implements AffectationsMetier {
+public class GestMetierAdminsIMPL implements GestMetierAdmins {
+	
+	GestDaoAdmins dao;
+	
+	public void setDao(GestDaoAdmins dao) {
+		this.dao = dao;
+	}
+
+	@Override
+	public void addClient(Client cli) {
+		dao.addClient(cli);
+	}
+
+	@Override
+	public Conseiller addConseiller(Conseiller e, String matricule) {
+		return dao.addConseiller(e, matricule);
+	}
+
+	@Override
+	public Compte addCompte(Compte cpte) {
+		return dao.addCompte(cpte);
+	}
 
 	@Override
 	public Compte consulterCompte(String codeCpte) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.consulterCompte(codeCpte);
 	}
 
 	@Override
 	public Conseiller consulterConseiller(String codeCons) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.consulterConseiller(codeCons);
 	}
 
 	@Override

@@ -9,10 +9,10 @@ import com.gestibank.entities.DeOuvCompte;
 import com.gestibank.entities.Demandes;
 import com.gestibank.entities.Utilisateur;
 
-public abstract interface AffectationsMetier {
-	public Client addClient(Client cli);
+public abstract interface GestMetierAdmins {
+	public void addClient(Client cli);
 	public Conseiller addConseiller(Conseiller e,String matricule);
-	public Compte addCompte(Compte cpte, Client cli, Conseiller cons);
+	public Compte addCompte(Compte cpte);
 	
 	public Compte consulterCompte(String codeCpte);
 	public Conseiller consulterConseiller(String codeCons);
